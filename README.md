@@ -1,5 +1,5 @@
 
-
+[Клик чтобы открыть проект на gh-pages](https://evil0n.github.io/type_speed_training/)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

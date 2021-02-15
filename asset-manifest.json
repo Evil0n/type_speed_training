@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/type_speed_training/static/css/main.b2c4863e.chunk.css",
-    "main.js": "/type_speed_training/static/js/main.06df6391.chunk.js",
-    "main.js.map": "/type_speed_training/static/js/main.06df6391.chunk.js.map",
-    "runtime-main.js": "/type_speed_training/static/js/runtime-main.600a855e.js",
-    "runtime-main.js.map": "/type_speed_training/static/js/runtime-main.600a855e.js.map",
+    "main.js": "/type_speed_training/static/js/main.ec791d2c.chunk.js",
+    "main.js.map": "/type_speed_training/static/js/main.ec791d2c.chunk.js.map",
+    "runtime-main.js": "/type_speed_training/static/js/runtime-main.adafdaa6.js",
+    "runtime-main.js.map": "/type_speed_training/static/js/runtime-main.adafdaa6.js.map",
     "static/css/2.47bbeb97.chunk.css": "/type_speed_training/static/css/2.47bbeb97.chunk.css",
-    "static/js/2.050937b0.chunk.js": "/type_speed_training/static/js/2.050937b0.chunk.js",
-    "static/js/2.050937b0.chunk.js.map": "/type_speed_training/static/js/2.050937b0.chunk.js.map",
-    "static/js/3.57092867.chunk.js": "/type_speed_training/static/js/3.57092867.chunk.js",
-    "static/js/3.57092867.chunk.js.map": "/type_speed_training/static/js/3.57092867.chunk.js.map",
+    "static/js/2.d70d6823.chunk.js": "/type_speed_training/static/js/2.d70d6823.chunk.js",
+    "static/js/2.d70d6823.chunk.js.map": "/type_speed_training/static/js/2.d70d6823.chunk.js.map",
+    "static/js/3.c5d1edb5.chunk.js": "/type_speed_training/static/js/3.c5d1edb5.chunk.js",
+    "static/js/3.c5d1edb5.chunk.js.map": "/type_speed_training/static/js/3.c5d1edb5.chunk.js.map",
     "index.html": "/type_speed_training/index.html",
     "static/css/2.47bbeb97.chunk.css.map": "/type_speed_training/static/css/2.47bbeb97.chunk.css.map",
     "static/css/main.b2c4863e.chunk.css.map": "/type_speed_training/static/css/main.b2c4863e.chunk.css.map",
-    "static/js/2.050937b0.chunk.js.LICENSE.txt": "/type_speed_training/static/js/2.050937b0.chunk.js.LICENSE.txt"
+    "static/js/2.d70d6823.chunk.js.LICENSE.txt": "/type_speed_training/static/js/2.d70d6823.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.600a855e.js",
+    "static/js/runtime-main.adafdaa6.js",
     "static/css/2.47bbeb97.chunk.css",
-    "static/js/2.050937b0.chunk.js",
+    "static/js/2.d70d6823.chunk.js",
     "static/css/main.b2c4863e.chunk.css",
-    "static/js/main.06df6391.chunk.js"
+    "static/js/main.ec791d2c.chunk.js"
   ]
 }

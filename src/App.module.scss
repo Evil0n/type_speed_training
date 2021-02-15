@@ -1,0 +1,29 @@
+.Layout {
+  min-height: 100vh !important;
+}
+
+.Header {
+  color: #1890ff !important;
+}
+
+.Content {
+  padding: 24px 50px;
+  box-sizing: border-box;
+}
+
+.Text {
+  font-size: 18px;
+  &__success {
+    color: #2f54eb;
+  }
+
+  &__pointer {
+    color: #2f54eb;
+    background: #52c41a;
+    border-radius: 2px;
+
+    &_error {
+      background: #f5222d;
+    }
+  }
+}

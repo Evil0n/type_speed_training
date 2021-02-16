@@ -2,13 +2,15 @@ import styles from './App.module.scss'
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import cn from 'classnames'
 import { Layout, Space, Statistic, Row, Col } from 'antd'
+import { useText } from './useText'
+
 
 const {Content, Header, Footer} = Layout
 
 let interval
 
 function App () {
-  const [text, setText] = useState('')
+  const text = useText()
   const [pointer, setPointer] = useState(0)
   const [successChr, setSuccessChr] = useState(true)
   const [timer, setTimer] = useState(0)
@@ -83,6 +85,7 @@ function App () {
       }, 1000)
       window.addEventListener('keydown', keyBoardListener)
     }, [handlePause, keyBoardListener, setIsStarted])
+
   const handleToggle = useMemo(() => {
     return isStarted ? handlePause : handleStart
   }, [handleStart, handlePause, isStarted])
@@ -101,13 +104,7 @@ function App () {
     return () => handlePause()
   }, [])
 
-  useEffect(() => {
-    fetch('https://fish-text.ru/get')
-      .then((result) => result.json())
-      .then((result) => {
-        setText(result.text)
-      })
-  }, [])
+
 
   return (
     <Layout className={styles.Layout}>

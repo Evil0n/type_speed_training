@@ -1,21 +1,15 @@
 import styles from './App.module.scss'
 import { Layout, Space, Statistic, Row, Col } from 'antd'
-import { useSpeedTraining } from './useSeedTraining'
+import { useSpeedTraining } from './useSpeedTraining'
 
 const {Content, Header, Footer} = Layout
 
 function App () {
   const {
-    pointerClasses,
-    pointerText,
-    restText,
-    handleToggle,
-    btnText,
-    handleStop,
-    timer,
-    typeSpeed,
-    accuracy,
-    successText,
+    statistic,
+    text,
+    pointer,
+    handle,
   } = useSpeedTraining()
   return (
     <Layout className={styles.Layout}>
@@ -24,23 +18,23 @@ function App () {
       <Content className={styles.Content}>
         <Space direction="vertical">
           <div className={styles.Text}>
-            <span className={styles.Text__success}>{successText}</span><span
-            className={pointerClasses}>{pointerText}</span><span>{restText}</span>
+            <span className={styles.Text__success}>{text.success}</span><span
+            className={pointer.classes}>{pointer.text}</span><span>{text.rest}</span>
           </div>
           <Space>
-            <div className="ant-btn" onClick={handleToggle}>{btnText}</div>
-            <div className="ant-btn" onClick={handleStop}>Стоп</div>
+            <div className="ant-btn" onClick={handle.toggle}>{text.btn}</div>
+            <div className="ant-btn" onClick={handle.stop}>Стоп</div>
           </Space>
           <Row gutter={16}>
             <Col span={12}>
-              <Statistic title="Прошло времени" value={timer} suffix="сек"/>
+              <Statistic title="Прошло времени" value={statistic.timer} suffix="сек"/>
             </Col>
             <Col span={12}>
-              <Statistic title="Скорость вашей печати" value={typeSpeed}
+              <Statistic title="Скорость вашей печати" value={statistic.typeSpeed}
                          suffix="символов в минуту"/>
             </Col>
             <Col span={24} style={{marginTop: 32}}>
-              <Statistic title="Аккуратность" value={accuracy} suffix="%"/>
+              <Statistic title="Аккуратность" value={statistic.accuracy} suffix="%"/>
             </Col>
           </Row>
         </Space>

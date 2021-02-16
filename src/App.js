@@ -6,10 +6,10 @@ const {Content, Header, Footer} = Layout
 
 function App () {
   const {
-    statistic,
     text,
-    pointer,
-    handle,
+    pointerClasses,
+    controls,
+    statistic,
   } = useSpeedTraining()
   return (
     <Layout className={styles.Layout}>
@@ -19,11 +19,11 @@ function App () {
         <Space direction="vertical">
           <div className={styles.Text}>
             <span className={styles.Text__success}>{text.success}</span><span
-            className={pointer.classes}>{pointer.text}</span><span>{text.rest}</span>
+            className={pointerClasses}>{text.pointer}</span><span>{text.rest}</span>
           </div>
           <Space>
-            <div className="ant-btn" onClick={handle.toggle}>{text.btn}</div>
-            <div className="ant-btn" onClick={handle.stop}>Стоп</div>
+            <div className="ant-btn" onClick={controls.toggle}>{controls.btnText}</div>
+            <div className="ant-btn" onClick={controls.stop}>Стоп</div>
           </Space>
           <Row gutter={16}>
             <Col span={12}>

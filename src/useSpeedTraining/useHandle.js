@@ -1,15 +1,19 @@
-import {useCallback, useState, useEffect, useMemo} from 'react'
+import { useCallback } from 'react'
 
 let interval
 
-export function useHandle (text, statistic) {
-  const [isStarted, setIsStarted] = useState(false)
-  const {setSuccessChr, setPointersErrors, setTimer}=statistic
-
+export function useHandle (text, setters) {
+  const {
+    setIsStarted,
+    setPointer,
+    setPointersErrors,
+    setSuccessChr,
+    setTimer,
+  } = setters
   const keyBoardListener = useCallback((e) => {
     if (e.key.length !== 1) { return }
-    text.setPointer(prevPointer => {
-      const success = e.key === text.full[prevPointer]
+    setPointer(prevPointer => {
+      const success = e.key === text[prevPointer]
       setSuccessChr(success)
       if (success) {
         return ++prevPointer
@@ -20,7 +24,7 @@ export function useHandle (text, statistic) {
       })
       return prevPointer
     })
-  }, [text.setPointer, text.full])
+  }, [setPointer, text])
 
   const handlePause = useCallback(
     () => {
@@ -31,13 +35,13 @@ export function useHandle (text, statistic) {
     [keyBoardListener, setIsStarted])
   const handleStop = useCallback(() => {
     handlePause()
-    text.setPointer(0)
+    setPointer(0)
     setSuccessChr(true)
     setPointersErrors([])
     setTimer(0)
   }, [
     handlePause,
-    text.setPointer,
+    setPointer,
     setSuccessChr,
     setPointersErrors,
     setTimer])
@@ -53,23 +57,9 @@ export function useHandle (text, statistic) {
       window.addEventListener('keydown', keyBoardListener)
     }, [handlePause, keyBoardListener, setIsStarted])
 
-  const handleToggle = useMemo(() => {
-    return isStarted ? handlePause : handleStart
-  }, [handleStart, handlePause, isStarted])
-
-  useEffect(() => {
-    if (text.pointer.number >= text.full.length) {
-      handlePause()
-    }
-  }, [text.full, handlePause, text.pointer.number])
-
-  useEffect(() => {
-    return () => handlePause()
-  }, [])
-
   return {
     stop: handleStop,
-    toggle: handleToggle,
-    isStarted
+    pause: handlePause,
+    start: handleStart,
   }
 }

@@ -1,9 +1,6 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
-export function useText () {
-  const [pointer, setPointer] = useState(0)
-  const [fullText, setFullText] = useState('')
-
+export function useText (pointer, fullText, setFullText ) {
   const successText = useMemo(() => fullText.slice(0,
     pointer), [fullText, pointer])
   const restText = useMemo(() => fullText.slice(pointer + 1, fullText.length),
@@ -19,12 +16,8 @@ export function useText () {
       })
   }, [])
   return {
-    setPointer,
-    pointer: {
-      text: pointerText,
-      number: pointer,
-    },
     full: fullText,
+    pointer: pointerText,
     success: successText,
     rest: restText,
   }

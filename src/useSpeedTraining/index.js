@@ -1,38 +1,50 @@
 import { useText } from './useText'
-import styles from '../App.module.scss'
-import cn from 'classnames'
-import { useState, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { useHandle } from './useHandle'
-import {useStatistic} from './useStatistic'
+import { useStatistic } from './useStatistic'
+import { useControlsMemo } from './useControlsMemo'
+import { usePointerClass } from './usePointerClass'
 
 export function useSpeedTraining () {
   const [successChr, setSuccessChr] = useState(true)
+  const [isStarted, setIsStarted] = useState(false)
+  const [timer, setTimer] = useState(0)
+  const [pointerErrors, setPointersErrors] = useState([])
+  const [pointer, setPointer] = useState(0)
+  const [fullText, setFullText] = useState('')
 
-  const text = useText()
-  const statistic = useStatistic(text)
-  const handle = useHandle(text, {setSuccessChr, ...statistic})
+  const setters = {
+    setIsStarted,
+    setPointer,
+    setPointersErrors,
+    setSuccessChr,
+    setTimer,
+  }
 
-  const btnText = useMemo(() => {
-    return handle.isStarted ? 'Пауза' : 'Старт'
-  }, [handle.isStarted])
+  const text = useText(pointer, fullText, setFullText, isStarted)
+  const statistic = useStatistic(text, timer, pointerErrors)
+  const {start, pause, stop} = useHandle(fullText, setters)
+  const {toggle, btnText} = useControlsMemo(isStarted, start, pause)
+  const pointerClasses = usePointerClass(successChr)
 
-  const pointerClasses = useMemo(() => {
-    const classes = [
-      styles.Text__pointer,
-    ]
-    if (!successChr) {
-      classes.push(styles.Text__pointer_error)
+  useEffect(() => {
+    if (pointer >= text.length) {
+      pause()
     }
-    return cn(classes)
-  }, [successChr])
+  }, [text, pause, pointer])
+
+  useEffect(() => {
+    return () => pause()
+  }, [])
 
   return {
-    text: {...text, btn: btnText},
-    pointer: {
-      ...text.pointer,
-      classes: pointerClasses,
+    text,
+    pointerClasses,
+    controls: {
+      toggle,
+      stop,
+      btnText,
     },
-    handle,
-    statistic
+    statistic,
   }
 }

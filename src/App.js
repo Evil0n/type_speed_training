@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './App.module.scss'
 import { Layout, Space, Statistic, Row, Col } from 'antd'
 import { useSpeedTraining } from './useSpeedTraining'
